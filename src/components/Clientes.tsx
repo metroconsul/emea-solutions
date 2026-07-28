@@ -77,7 +77,6 @@ export default function Clientes() {
     return withFontsReady(root, () => {
       titleReveal(root.querySelector('h2')!);
       fadeUp(root.querySelector('.clientes-aside')!, { delay: 0.1 });
-      fadeUp(root.querySelector('.clientes-rows')!, { y: 50 });
     });
   }, []);
 
