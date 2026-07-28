@@ -90,7 +90,7 @@ export default function Clientes() {
           <div className="clientes-aside">
             <p>
               Atendemos indústrias líderes de diferentes segmentos — entregando impacto em escala
-              desde 2019.
+              desde 2018.
             </p>
             <button className="btn btn-red" onClick={() => goToSection('#contato')}>
               Seja um cliente <span className="arrow">→</span>

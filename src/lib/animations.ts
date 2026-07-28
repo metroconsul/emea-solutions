@@ -95,8 +95,9 @@ export function fadeUp(el: Element, opts: { y?: number; delay?: number; start?: 
 
 /** Animated counter (count-up) used in the hero stats. */
 export function countUp(el: HTMLElement, target: number, suffix = '', duration = 2) {
+  const format = (n: number) => `${Math.round(n).toLocaleString('pt-BR')}${suffix}`;
   if (prefersReducedMotion()) {
-    el.textContent = `${target}${suffix}`;
+    el.textContent = format(target);
     return;
   }
   const proxy = { value: 0 };
@@ -105,7 +106,7 @@ export function countUp(el: HTMLElement, target: number, suffix = '', duration =
     duration,
     ease: 'power2.out',
     onUpdate: () => {
-      el.textContent = `${Math.round(proxy.value)}${suffix}`;
+      el.textContent = format(proxy.value);
     },
   });
 }

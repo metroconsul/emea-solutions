@@ -45,10 +45,17 @@
   z-index: 1;
   width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding-bottom: 56px;
+}
+
+.hero-main {
+  display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 48px;
-  padding-bottom: 64px;
+  flex-wrap: wrap;
 }
 
 .hero-copy {
@@ -64,7 +71,8 @@
 
 .hero-stats {
   display: flex;
-  gap: clamp(28px, 3.5vw, 56px);
+  flex-wrap: wrap;
+  gap: clamp(20px, 2.5vw, 40px);
   flex-shrink: 0;
 }
 
@@ -89,6 +97,40 @@
 .hero-stat-label {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-certs {
+  list-style: none;
+  margin: 0;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: center;
+}
+
+.hero-cert {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+.hero-cert::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--red);
 }
 
 @media (max-width: 960px) {

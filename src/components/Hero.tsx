@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap, SplitText, countUp, prefersReducedMotion } from '../lib/animations';
 import './Hero.css';
 
-// TODO: preencher com os números reais da EMEA antes de publicar
 const STATS = [
-  { value: 7, suffix: '+', label: 'Anos de experiência' }, // desde 2019
-  { value: 150, suffix: '+', label: 'Projetos entregues' }, // placeholder
-  { value: 40, suffix: '+', label: 'Clientes atendidos' }, // placeholder
+  { value: 8, suffix: '+', label: 'Anos no mercado' }, // fundada em 2018
+  { value: 600, suffix: '+', label: 'Projetos industriais' },
+  { value: 500, suffix: '+', label: 'Painéis montados' },
+  { value: 40, suffix: '+', label: 'Grandes clientes' },
+  { value: 20000, suffix: '+', label: 'Horas de engenharia' },
 ];
+
+// Certificações e normas técnicas atendidas (selos de confiança na capa).
+const CERTS = ['ISO 9001', 'CREA', 'NR-10', 'NR-12', 'NBR 5410', 'NBR 14039', 'NBR 5419'];
 
 // fotografias autoriais da EMEA (slideshow, pedido do cliente: ao menos 4 slides)
 const SLIDES = [
@@ -60,7 +64,7 @@ export default function Hero({ started }: { started: boolean }) {
           delay: 0.15,
         });
       });
-      gsap.from('.hero-sub, .hero-stats', {
+      gsap.from('.hero-sub, .hero-stats, .hero-certs', {
         y: 30,
         autoAlpha: 0,
         duration: 1,
@@ -92,21 +96,30 @@ export default function Hero({ started }: { started: boolean }) {
       </div>
       <div className="hero-overlay" />
       <div className="container hero-content">
-        <div className="hero-copy">
-          <h1>Experiência que entrega soluções</h1>
-          <p className="hero-sub">
-            Engenharia integrada em Elétrica, Instrumentação e Automação — de forma segura e
-            rentável.
-          </p>
+        <div className="hero-main">
+          <div className="hero-copy">
+            <h1>Experiência que entrega soluções</h1>
+            <p className="hero-sub">
+              Engenharia integrada em Elétrica, Instrumentação e Automação — de forma segura e
+              rentável.
+            </p>
+          </div>
+          <div className="hero-stats">
+            {STATS.map((stat) => (
+              <div className="hero-stat" key={stat.label}>
+                <span className="hero-stat-number">0{stat.suffix}</span>
+                <span className="hero-stat-label">{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="hero-stats">
-          {STATS.map((stat) => (
-            <div className="hero-stat" key={stat.label}>
-              <span className="hero-stat-number">0{stat.suffix}</span>
-              <span className="hero-stat-label">{stat.label}</span>
-            </div>
+        <ul className="hero-certs" aria-label="Certificações e normas técnicas atendidas">
+          {CERTS.map((cert) => (
+            <li className="hero-cert" key={cert}>
+              {cert}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
