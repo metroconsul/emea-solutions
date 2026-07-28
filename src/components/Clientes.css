@@ -36,8 +36,8 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  /* slow, gentle infinite scroll */
-  animation: marquee-scroll 90s linear infinite;
+  /* slow, gentle — but clearly visible — infinite scroll */
+  animation: marquee-scroll 45s linear infinite;
   will-change: transform;
 }
 
