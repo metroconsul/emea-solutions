@@ -1,20 +1,26 @@
 {
-  "name": "emea-solutions",
+  "name": "emea-evostel",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "EMEA Solutions — engenharia elétrica industrial, instrumentação e automação (São José dos Campos · SP)",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "gsap": "^3.13.0",
-    "lenis": "^1.1.18"
+    "lenis": "^1.3.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "swiper": "^11.2.6"
   },
   "devDependencies": {
-    "typescript": "^5.6.3",
-    "vite": "^5.4.10"
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
   }
 }

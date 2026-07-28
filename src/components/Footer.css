@@ -1,0 +1,198 @@
+.footer {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(16, 16, 18, 0.88), rgba(16, 16, 18, 0.82)),
+    url('/assets/fotos/footer-bg.jpg') center / cover no-repeat;
+  color: var(--white);
+}
+
+/* --- newsletter --- */
+.newsletter {
+  padding: clamp(90px, 10vw, 150px) 0 clamp(60px, 7vw, 110px);
+}
+
+.newsletter-label {
+  color: var(--gray-2);
+  margin-bottom: 28px;
+}
+
+.newsletter h2 {
+  font-size: clamp(38px, 4.6vw, 68px);
+  max-width: 720px;
+}
+
+.newsletter-form {
+  margin-top: 40px;
+  display: flex;
+  gap: 14px;
+  max-width: 560px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  padding: 10px 0;
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-bottom-color: var(--red-hover);
+}
+
+/* --- rounded floating panel (Evostel footer pattern) --- */
+.footer-panel-wrap {
+  padding: 0 clamp(12px, 1.5vw, 20px) clamp(12px, 1.5vw, 20px);
+}
+
+.footer-panel {
+  position: relative;
+  background: var(--ink-2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: clamp(40px, 5vw, 70px) clamp(24px, 4vw, 64px) clamp(24px, 3vw, 40px);
+  overflow: hidden;
+}
+
+.footer-watermark {
+  position: absolute;
+  right: -60px;
+  bottom: -40px;
+  width: clamp(320px, 38vw, 620px);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.footer-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.6fr repeat(4, 1fr);
+  gap: 40px;
+}
+
+.footer-logo {
+  height: 52px;
+  width: auto;
+  filter: brightness(1.5);
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  color: var(--gray-2);
+  font-size: 15px;
+}
+
+.footer-since {
+  margin-top: 14px;
+}
+
+/* ISO 9001 badge (Evostel GPTW-badge slot) */
+.footer-iso {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 300px;
+}
+
+.footer-iso img {
+  width: 84px;
+  flex-shrink: 0;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.footer-iso span {
+  font-size: 13px;
+  color: var(--gray-2);
+  line-height: 1.45;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.footer-col-title {
+  color: var(--red-hover);
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.footer-col a,
+.footer-col button {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  text-align: left;
+  transition: color 0.25s ease;
+}
+
+.footer-col a:hover,
+.footer-col button:hover {
+  color: var(--red-hover);
+}
+
+.footer-bottom {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: clamp(48px, 6vw, 90px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--gray-2);
+  font-size: 14px;
+}
+
+.footer-top {
+  color: var(--white);
+  font-size: 14px;
+}
+
+.footer-top:hover {
+  color: var(--red-hover);
+}
+
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .newsletter h2 {
+    font-size: 32px;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .newsletter-form .btn {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,91 @@
+.wa {
+  position: fixed;
+  right: clamp(16px, 2vw, 28px);
+  bottom: clamp(16px, 2vw, 28px);
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.wa-fab {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  background: #25d366;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(16, 16, 18, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.wa-fab:hover {
+  transform: scale(1.07);
+  background: #1fbd5a;
+}
+
+.wa-fab svg {
+  width: 32px;
+  height: 32px;
+}
+
+.wa-pop {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(16, 16, 18, 0.25);
+  padding: 16px;
+  width: 264px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.wa-pop.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.wa-pop-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.wa-option {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--smoke);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: background-color 0.25s ease;
+}
+
+.wa-option:hover {
+  background: #e8f8ee;
+}
+
+.wa-option-label {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.wa-option-phone {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ink);
+}

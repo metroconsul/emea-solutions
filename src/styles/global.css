@@ -1,0 +1,259 @@
+/* ============================================================
+   EMEA Solutions — design tokens (ref. Evostel, re-skinned)
+   ============================================================ */
+:root {
+  /* Brand */
+  --red: #ca3438;
+  --red-hover: #e05a5e;
+  --red-soft: #f7e2e3;
+  --ink: #101012;
+  --ink-2: #1a1a1e;
+  --ink-3: #232328;
+
+  /* Neutrals (kept from reference) */
+  --white: #ffffff;
+  --smoke: #f5f5f5;
+  --gray: #62615a;
+  --gray-2: #9b9b9b;
+  --gray-3: #c6c6c6;
+
+  /* Layout */
+  --container: 1440px;
+  --pad: clamp(20px, 4vw, 56px);
+  --radius: 12px;
+  --radius-lg: 20px;
+
+  /* Type */
+  --font: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+  /* prevent iOS Safari shrink-to-fit zoom when a child paints outside the
+     viewport (e.g. the services slider) — clip on html, not just body */
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.37;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(42px, 4.2vw, 64px);
+  line-height: 1.12;
+}
+
+h2 {
+  font-size: clamp(32px, 3.2vw, 48px);
+  line-height: 1.16;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+/* ---------- layout helpers ---------- */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+
+.section {
+  padding: clamp(90px, 10vw, 150px) 0;
+}
+
+/* Section head: "• Label" on the left, title block offset to the center-left
+   (mirrors Evostel's 12-col rhythm) */
+.sec-head {
+  display: grid;
+  grid-template-columns: minmax(180px, 30%) 1fr;
+  gap: 24px;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.sec-label {
+  font-size: 15px;
+  color: var(--gray);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.sec-label::before {
+  content: '•';
+  color: var(--gray-2);
+}
+
+.sec-title-block {
+  max-width: 620px;
+}
+
+.sec-title-block .sub {
+  margin-top: 22px;
+  color: var(--gray);
+  max-width: 440px;
+}
+
+/* SplitText line masking */
+.st-line {
+  overflow: hidden;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 10px;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn .arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+.btn-red {
+  background: var(--red);
+  color: var(--white);
+}
+
+.btn-red:hover {
+  background: var(--red-hover);
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.btn-white:hover {
+  background: var(--smoke);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* focus visibility (a11y) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--red);
+  color: var(--white);
+}
+
+@media (max-width: 860px) {
+  .sec-head {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* small phones */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 21px;
+  }
+
+  .section {
+    padding: 72px 0;
+  }
+
+  .btn {
+    padding: 14px 22px;
+    font-size: 15px;
+  }
+
+  .sec-title-block .sub {
+    font-size: 15px;
+  }
+}

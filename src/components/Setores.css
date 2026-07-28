@@ -1,0 +1,65 @@
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.area-card {
+  background: var(--smoke);
+  border-radius: var(--radius);
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.area-card:hover {
+  background: var(--red);
+  color: var(--white);
+  transform: translateY(-4px);
+}
+
+.area-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--red);
+  transition: color 0.35s ease;
+}
+
+.area-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.area-card:hover .area-icon {
+  color: var(--white);
+}
+
+.area-label {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 1024px) {
+  .areas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .area-card {
+    flex-direction: row;
+    align-items: center;
+    padding: 22px 24px;
+  }
+}
