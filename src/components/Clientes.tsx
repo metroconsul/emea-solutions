@@ -7,7 +7,7 @@ import './Clientes.css';
 // Se uma imagem falhar, o card exibe o nome estilizado.
 const CLIENTES: { name: string; file: string }[] = [
   { name: 'Cargill', file: 'cargill.png' },
-  { name: 'Bayer', file: 'bayer.png' },
+  { name: 'Bayer', file: 'bayer.svg' },
   { name: 'Gerdau', file: 'gerdau.png' },
   { name: 'Pilkington', file: 'pilkington.png' },
   { name: 'Embraer', file: 'embraer.png' },
@@ -27,10 +27,15 @@ const CLIENTES: { name: string; file: string }[] = [
   { name: 'Wana Química', file: 'wana.png' },
   { name: 'Cibal Guaranitá', file: 'guaranita.png' },
   { name: 'Cebrace', file: 'cebrace.png' },
+  { name: 'Rede D\'Or São Luiz', file: 'saoluiz.png' },
+  { name: 'JPaulin Construtora', file: 'jpa.png' },
+  { name: 'A.V.A. Engenharia', file: 'ava.png' },
+  { name: 'APVE Embraer', file: 'apve.png' },
 ];
 
-const ROW_A = CLIENTES.slice(0, 11);
-const ROW_B = CLIENTES.slice(11);
+const half = Math.ceil(CLIENTES.length / 2);
+const ROW_A = CLIENTES.slice(0, half);
+const ROW_B = CLIENTES.slice(half);
 
 function ClienteCard({ name, file }: { name: string; file: string }) {
   const [imgOk, setImgOk] = useState(true);

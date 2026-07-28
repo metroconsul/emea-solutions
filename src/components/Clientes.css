@@ -17,6 +17,15 @@
   flex-direction: column;
   gap: 16px;
   overflow: hidden;
+  /* fade the logos softly in/out at both edges for a seamless loop */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
 }
 
 /* continuous CSS marquee: track holds the list 4x, slides by -50% */
@@ -27,7 +36,9 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 55s linear infinite;
+  /* slow, gentle infinite scroll */
+  animation: marquee-scroll 90s linear infinite;
+  will-change: transform;
 }
 
 /* margin (not gap) keeps spacing uniform across the -50% loop seam */
@@ -61,37 +72,37 @@
 }
 
 .cliente-card {
-  width: clamp(230px, 20vw, 310px);
-  height: 148px;
+  width: clamp(210px, 18vw, 280px);
+  height: 132px;
   background: var(--white);
   border: 1px solid var(--gray-3);
   border-radius: var(--radius);
-  padding: 20px 26px;
+  padding: 20px 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   transition:
     border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .cliente-card:hover {
   border-color: var(--red);
   box-shadow: 0 14px 30px rgba(16, 16, 18, 0.08);
+  transform: translateY(-4px);
 }
 
-/* Logos exibidos por inteiro, em cores originais (pedido do cliente). */
+/* Logos exibidos por inteiro, em cores originais (pedido do cliente).
+   max-height moderado evita ampliar demais logos de baixa resolução;
+   image-rendering suaviza o reescalonamento dos rasters pequenos. */
 .cliente-card img {
-  max-height: 108px;
+  max-height: 72px;
   max-width: 100%;
   width: auto;
   object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.cliente-card:hover img {
-  transform: scale(1.04);
+  image-rendering: auto;
 }
 
 .cliente-name {
