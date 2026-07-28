@@ -28,7 +28,8 @@
   mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
 }
 
-/* continuous CSS marquee: track holds the list 4x, slides by -50% */
+/* continuous logo marquee — motion driven by requestAnimationFrame in JS,
+   so it scrolls regardless of the OS "reduce motion" setting */
 .marquee {
   overflow: hidden;
 }
@@ -36,39 +37,13 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  /* slow, gentle — but clearly visible — infinite scroll */
-  animation: marquee-scroll 45s linear infinite;
   will-change: transform;
 }
 
-/* margin (not gap) keeps spacing uniform across the -50% loop seam */
+/* margin (not gap) keeps spacing uniform across the loop seam */
 .marquee-track > div {
   margin-right: 16px;
   flex-shrink: 0;
-}
-
-.marquee-reverse .marquee-track {
-  animation-direction: reverse;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
 }
 
 .cliente-card {

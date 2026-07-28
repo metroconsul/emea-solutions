@@ -56,14 +56,64 @@ function ClienteCard({ name, file }: { name: string; file: string }) {
   );
 }
 
-/** Continuous logo marquee: the track holds the list 4x and slides by -50%,
- *  so the loop is seamless. Hover pauses (CSS animation-play-state). */
-function MarqueeRow({ clientes, reverse }: { clientes: typeof CLIENTES; reverse?: boolean }) {
-  const quadrupled = [...clientes, ...clientes, ...clientes, ...clientes];
+/** Continuous logo marquee driven by requestAnimationFrame. The track holds the
+ *  list twice; we translate it and wrap around one copy's width for a seamless
+ *  loop. JS-driven (not CSS keyframes) so it always scrolls, even when the OS has
+ *  "reduce motion" enabled. Hover pauses the motion. speed is px per second. */
+function MarqueeRow({
+  clientes,
+  reverse,
+  speed = 55,
+}: {
+  clientes: typeof CLIENTES;
+  reverse?: boolean;
+  speed?: number;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const doubled = [...clientes, ...clientes];
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let raf = 0;
+    let last = performance.now();
+    // start reversed rows pre-offset so they scroll the opposite direction
+    let offset = 0;
+    const dir = reverse ? -1 : 1;
+    let paused = false;
+
+    const tick = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      const half = track.scrollWidth / 2; // width of one copy of the list
+      if (!paused && half > 0) {
+        offset += dir * speed * dt;
+        // keep offset within [0, half) for a seamless wrap
+        offset = ((offset % half) + half) % half;
+        track.style.transform = `translateX(${-offset}px)`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    const wrap = track.parentElement;
+    const onEnter = () => (paused = true);
+    const onLeave = () => (paused = false);
+    wrap?.addEventListener('mouseenter', onEnter);
+    wrap?.addEventListener('mouseleave', onLeave);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      wrap?.removeEventListener('mouseenter', onEnter);
+      wrap?.removeEventListener('mouseleave', onLeave);
+    };
+  }, [reverse, speed]);
+
   return (
-    <div className={`marquee${reverse ? ' marquee-reverse' : ''}`}>
-      <div className="marquee-track">
-        {quadrupled.map((cliente, i) => (
+    <div className="marquee">
+      <div className="marquee-track" ref={trackRef}>
+        {doubled.map((cliente, i) => (
           <div key={`${cliente.file}-${i}`} aria-hidden={i >= clientes.length}>
             <ClienteCard {...cliente} />
           </div>
