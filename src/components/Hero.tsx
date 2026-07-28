@@ -2,14 +2,25 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap, SplitText, countUp, prefersReducedMotion } from '../lib/animations';
 import './Hero.css';
 
-// TODO: preencher com os números reais da EMEA antes de publicar
 const STATS = [
-  { value: 7, suffix: '+', label: 'Anos de experiência' }, // desde 2019
-  { value: 150, suffix: '+', label: 'Projetos entregues' }, // placeholder
-  { value: 40, suffix: '+', label: 'Clientes atendidos' }, // placeholder
+  { value: 600, suffix: '+', label: 'Projetos industriais' },
+  { value: 40, suffix: '+', label: 'Grandes clientes' },
+  { value: 8, suffix: '', label: 'Anos no mercado' },
+  { value: 500, suffix: '+', label: 'Painéis montados' },
+  { value: 20000, suffix: '+', label: 'Horas de engenharia' },
 ];
 
-// fotografias autoriais da EMEA (slideshow, pedido do cliente: ao menos 4 slides)
+const CERTIFICATIONS = [
+  'ISO 9001 Certificada',
+  'CREA',
+  'NR-10',
+  'NR-12',
+  'NBR 5410',
+  'NBR 14039',
+  'NBR 5419',
+];
+
+// fotografias autoriais da EMEA (slideshow)
 const SLIDES = [
   '/assets/fotos/porque-eletrocalhas.jpg',
   '/assets/fotos/servico-automacao.jpg',
@@ -60,7 +71,7 @@ export default function Hero({ started }: { started: boolean }) {
           delay: 0.15,
         });
       });
-      gsap.from('.hero-sub, .hero-stats', {
+      gsap.from('.hero-sub, .hero-stats, .hero-certs', {
         y: 30,
         autoAlpha: 0,
         duration: 1,
@@ -98,6 +109,16 @@ export default function Hero({ started }: { started: boolean }) {
             Engenharia integrada em Elétrica, Instrumentação e Automação — de forma segura e
             rentável.
           </p>
+          <ul className="hero-certs">
+            {CERTIFICATIONS.map((cert) => (
+              <li key={cert} className="hero-cert">
+                <svg className="hero-cert-check" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                </svg>
+                {cert}
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="hero-stats">
           {STATS.map((stat) => (

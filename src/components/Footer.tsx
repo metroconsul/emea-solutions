@@ -82,7 +82,7 @@ export default function Footer() {
                 <br />
                 Elétrica · Instrumentação · Automação
               </p>
-              <p className="footer-since">Desde 2019 — Jacareí, SP</p>
+              <p className="footer-since">Desde 2018 — Jacareí, SP</p>
               <div className="footer-iso">
                 <img src="/assets/iso-9001.svg" alt="Certificação ISO 9001:2015" loading="lazy" />
                 <span>Sistema de Gestão da Qualidade certificado ISO 9001</span>
@@ -136,7 +136,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-bottom">
-            <span>© 2019–2026 EMEA Solutions. Todos os direitos reservados.</span>
+            <span>© 2018–2026 EMEA Solutions. Todos os direitos reservados.</span>
             <button className="footer-top" onClick={backToTop}>
               Voltar ao topo ↑
             </button>

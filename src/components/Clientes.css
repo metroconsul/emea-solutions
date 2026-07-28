@@ -61,19 +61,20 @@
 }
 
 .cliente-card {
-  width: clamp(230px, 20vw, 310px);
-  height: 148px;
+  width: clamp(260px, 22vw, 360px);
+  height: 168px;
   background: var(--white);
   border: 1px solid var(--gray-3);
   border-radius: var(--radius);
-  padding: 22px 30px;
+  padding: 26px 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   transition:
     border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .cliente-card:hover {
@@ -82,19 +83,15 @@
 }
 
 .cliente-card img {
-  max-height: 96px;
+  max-height: 118px;
   max-width: 100%;
   object-fit: contain;
-  opacity: 0.7;
-  filter: grayscale(1);
-  transition:
-    opacity 0.3s ease,
-    filter 0.3s ease;
+  opacity: 1;
+  transition: transform 0.3s ease;
 }
 
-.cliente-card:hover img {
-  opacity: 1;
-  filter: grayscale(0);
+.cliente-card:hover {
+  transform: translateY(-4px);
 }
 
 .cliente-name {
