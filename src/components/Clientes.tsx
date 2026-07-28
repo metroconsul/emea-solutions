@@ -11,7 +11,7 @@ const CLIENTES: { name: string; file: string }[] = [
   { name: 'Gerdau', file: 'gerdau.png' },
   { name: 'Pilkington', file: 'pilkington.png' },
   { name: 'Embraer', file: 'embraer.png' },
-  { name: 'Cimed', file: 'cimed.svg' },
+  { name: 'Cimed', file: 'cimed.png' },
   { name: 'Gates', file: 'gates.png' },
   { name: 'Sabesp', file: 'sabesp.png' },
   { name: 'ICL', file: 'icl.png' },

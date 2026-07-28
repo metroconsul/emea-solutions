@@ -27,7 +27,7 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 55s linear infinite;
+  animation: marquee-scroll 80s linear infinite;
 }
 
 /* margin (not gap) keeps spacing uniform across the -50% loop seam */
