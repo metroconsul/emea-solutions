@@ -1,0 +1,20 @@
+{
+  "name": "emea-solutions",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "EMEA Solutions — engenharia elétrica industrial, instrumentação e automação (São José dos Campos · SP)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "lenis": "^1.1.18"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}
